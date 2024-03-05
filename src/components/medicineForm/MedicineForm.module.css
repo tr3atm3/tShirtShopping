@@ -1,0 +1,38 @@
+.formDiv {
+  margin: 2rem;
+  padding: 2rem;
+  width: 80%;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.form label {
+  display: block;
+  text-align: center;
+  margin: 1rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.btn:hover {
+  box-shadow: 1px 1px 0.5px black;
+}

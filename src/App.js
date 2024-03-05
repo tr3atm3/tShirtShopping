@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import MedicineInfo from "./components/medicineInfo/MedicineInfo";
+import CartModal from "./components/Cart/CartModal";
+import CartProvider from "./store/CartProvider";
+const App = () => {
+  const [showCartModal, setShowCartModal] = useState(false);
+  const removeCartModal = () => {
+    setShowCartModal(false);
+  };
 
-function App() {
+  const addCartModal = () => {
+    setShowCartModal(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartProvider>
+      {showCartModal && <CartModal onHideCart={removeCartModal} />}
+      <Header onShowCart={addCartModal} />
+      <MedicineInfo />
+    </CartProvider>
   );
-}
+};
 
 export default App;

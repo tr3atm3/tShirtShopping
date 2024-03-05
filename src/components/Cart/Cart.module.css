@@ -1,0 +1,10 @@
+.cart {
+  margin-right: 5rem;
+  padding: 1rem 2rem;
+}
+
+.cart:hover {
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}

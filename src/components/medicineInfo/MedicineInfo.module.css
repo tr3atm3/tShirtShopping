@@ -1,0 +1,17 @@
+.list {
+  list-style-type: none;
+}
+
+.about {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+.over {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+}

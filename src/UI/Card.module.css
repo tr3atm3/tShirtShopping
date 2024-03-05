@@ -1,0 +1,9 @@
+.card {
+  background-color: whitesmoke;
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 40px;
+  overflow: auto;
+  max-height: 70vh;
+}
