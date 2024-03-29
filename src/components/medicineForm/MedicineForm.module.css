@@ -1,7 +1,7 @@
 .formDiv {
-  margin: 2rem;
   padding: 2rem;
   width: 80%;
+  text-align: center;
 }
 
 .form {
@@ -10,7 +10,7 @@
   justify-content: space-around;
 }
 
-.form label {
+.formDiv label {
   display: block;
   text-align: center;
   margin: 1rem 0.5rem;

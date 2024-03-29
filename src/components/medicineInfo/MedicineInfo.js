@@ -6,7 +6,7 @@ import CartContext from "../../store/cart-context";
 
 const MedicineInfo = () => {
   const cartCtx = useContext(CartContext);
-  console.log(cartCtx);
+
   const medicineList = (
     <ul className={classes.list}>
       {cartCtx.items.map((item) => (

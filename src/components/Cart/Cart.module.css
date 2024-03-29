@@ -1,6 +1,7 @@
 .cart {
-  margin-right: 5rem;
-  padding: 1rem 2rem;
+  display: absolute;
+  right: 0;
+  top: -1rem;
 }
 
 .cart:hover {

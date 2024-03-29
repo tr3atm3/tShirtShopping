@@ -1,5 +1,6 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import CartContext from "./cart-context";
+import { act } from "react-dom/test-utils";
 
 const defaultState = {
   cartItems: [],
@@ -7,6 +8,10 @@ const defaultState = {
   totalAmount: 0,
 };
 const functionReducer = (state, action) => {
+  if (action.type === "fromCrud") {
+    return action;
+  }
+
   if (action.type === "NEWITEM") {
     const existingItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
@@ -172,9 +177,45 @@ const functionReducer = (state, action) => {
 
 const CartProvider = (props) => {
   const [allState, dispatchAction] = useReducer(functionReducer, defaultState);
+  const [id, setId] = useState(null);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://crudcrud.com/api/4a301c2a335c4252a0df9949d4d4bd62/products/660688821492af03e8f10c05"
+    );
+    const json = data.json();
+    dispatchAction(json);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    updateData();
+  }, [allState]);
+  const updateData = async () => {
+    try {
+      const response = await fetch(
+        "https://crudcrud.com/api/4a301c2a335c4252a0df9949d4d4bd62/products/660688821492af03e8f10c05",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(allState),
+        }
+      );
+
+      const responseData = await response.json();
+      const updatedData = responseData ? JSON.parse(responseData) : null;
+      console.log("Data updated successfully:", updatedData);
+    } catch (error) {
+      console.error("Error updating data:", error);
+    }
+  };
 
   const addNewItem = (item) => {
-    console.log(item);
     dispatchAction({
       type: "NEWITEM",
       item: item,
